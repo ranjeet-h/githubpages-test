@@ -2,17 +2,129 @@
 <html>
 
 <head>
+  <title>Recruiting Site</title>
   <meta name="viewport" content="width=device-width" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.1/iframeResizer.min.js"></script>
+
+  <style>
+    /* Resetting default margin and padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Styles for desktop screens */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      /* Other styles */
+    }
+
+    /* Styles for tablet screens */
+    @media (max-width: 992px) {
+      .container {
+        max-width: 960px;
+        /* Adjustments for tablet screens */
+      }
+    }
+
+    /* Styles for mobile screens */
+    @media (max-width: 768px) {
+      .container {
+        max-width: 720px;
+        /* Adjustments for mobile screens */
+      }
+    }
+
+    /* Other CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    header,
+    nav,
+    main,
+    aside,
+    footer {
+      margin-bottom: 20px;
+      /* padding: 20px; */
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    header {
+      text-align: center;
+    }
+
+    nav {
+      text-align: center;
+    }
+
+    nav a {
+      margin-right: 20px;
+      text-decoration: none;
+      color: #333;
+    }
+
+    main {
+      background-color: #fff;
+    }
+
+    aside {
+      background-color: #fff;
+    }
+
+    footer {
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
 
-  <iframe id="recruiterflow-jobs-iframe" src="https://rfstaging.xyz/rftest/jobs-page-widget"
-    style="width:1px;min-width:100%;border:0;"></iframe>
+  <div class="container">
+    <header>
+      <h1>Welcome to our Recruiting Site</h1>
+    </header>
 
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Jobs</a>
+      <a href="#">About Us</a>
+      <a href="#">Contact</a>
+    </nav>
 
-  <script>iFrameResize({ log: true }, '#recruiterflow-jobs-iframe')</script>
+    <main>
+      <!-- <h2>Latest Job Listings</h2> -->
+      <ul>
+
+        <!-- Add more job listings -->
+
+      </ul>
+      <div style="min-height: 60vh;
+      max-height: 60vh;
+      overflow-x: hidden;
+      overflow-y: scroll;">
+
+        <iframe id="recruiterflow-jobs-iframe" src="https://rfstaging.xyz/rftest/jobs-page-widget"
+          style="width:1px;min-width:100%;border:0;"></iframe>
+        <script>iFrameResize({ log: true }, '#recruiterflow-jobs-iframe');</script>
+      </div>
+    </main>
+
+    <aside>
+      <h2>Advertisement</h2>
+      <p>Ad space</p>
+    </aside>
+
+    <footer>
+      <p>&copy; 2024 Recruiting Site. All rights reserved.</p>
+    </footer>
+  </div>
 </body>
 
 </html>
