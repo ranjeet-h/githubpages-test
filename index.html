@@ -5,7 +5,31 @@
   <title>Recruiting Site</title>
   <meta name="viewport" content="width=device-width" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.1/iframeResizer.min.js"></script>
-
+  <script>
+    window.addEventListener('message', function(event) {
+      console.log("event from iframe message received", event)
+      try {
+        const data = JSON.parse(event.data);
+        console.log("data from iframe message received", data)
+        if(data && data.type === 'com.recruiterflow.application.apply') {
+          const targetDiv = document.querySelector('#recruiterflow-jobs-iframe');
+          if (targetDiv) {
+            // Calculate the position of the target div relative to the document
+            const targetDivPosition = targetDiv.getBoundingClientRect().top + window.scrollY;
+            // Scroll the window to the position of the target div
+            window.scrollTo({
+              top: targetDivPosition,
+              behavior: 'smooth' // Optional: Scroll behavior (smooth or auto)
+            });
+          } else {
+            console.error('Target div not found.');
+          }
+        }
+      } catch (err) {
+        //do nothing
+      }
+    });
+  </script>
   <style>
     /* Resetting default margin and padding */
     * {
