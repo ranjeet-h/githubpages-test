@@ -6,14 +6,17 @@
   <meta name="viewport" content="width=device-width" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.1/iframeResizer.min.js"></script>
   <script>
-    window.addEventListener('message', function(event) {
+    window.addEventListener('message', function (event) {
       console.log("event from iframe message received", event)
-      try {
+      try
+      {
         const data = JSON.parse(event.data);
         console.log("data from iframe message received", data)
-        if(data && data.type === 'com.recruiterflow.application.apply') {
+        if (data && data.type === 'com.recruiterflow.application.apply')
+        {
           const targetDiv = document.querySelector('#recruiterflow-jobs-iframe');
-          if (targetDiv) {
+          if (targetDiv)
+          {
             // Calculate the position of the target div relative to the document
             const targetDivPosition = targetDiv.getBoundingClientRect().top + window.scrollY;
             // Scroll the window to the position of the target div
@@ -21,12 +24,27 @@
               top: targetDivPosition,
               behavior: 'smooth' // Optional: Scroll behavior (smooth or auto)
             });
-          } else {
+          } else
+          {
             console.error('Target div not found.');
           }
         }
-      } catch (err) {
+      } catch (err)
+      {
         //do nothing
+      }
+    });
+  </script>
+  <script>
+    window.addEventListener('message', function (event) {
+      // Parse the message data
+      var data = JSON.parse(event.data);
+
+      // Check if the message is one of the ones you're looking for
+      if (data.type === 'com.recruiterflow.application.failure' || data.type === 'com.recruiterflow.application.success')
+      {
+        // Show an alert with the entire message data
+        alert(event.data);
       }
     });
   </script>
@@ -134,7 +152,7 @@
       overflow-x: hidden;
       overflow-y: scroll;">
 
-        <iframe id="recruiterflow-jobs-iframe" src="https://rfstaging.xyz/rftest/jobs-page-widget"
+        <iframe id="recruiterflow-jobs-iframe" src="http://localhost:5000/recruiterflowagency/jobs/4"
           style="width:1px;min-width:100%;border:0;"></iframe>
         <script>iFrameResize({ log: true }, '#recruiterflow-jobs-iframe');</script>
       </div>
